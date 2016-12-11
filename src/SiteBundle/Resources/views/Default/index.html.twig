@@ -1,0 +1,40 @@
+{% extends 'SiteBundle::parent.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            {{ include('SiteBundle:Default:check_user.html.twig') }}
+
+            <h3><a href="{{ url('category_page') }}">Categories List</a></h3>
+
+            <h1>Products List</h1>
+            <hr>
+
+            {% if products|length > 0 %}
+
+                {% for product in products %}
+                    <h3>{{ product.name }} [${{ product.price }}]</h3>
+                {% endfor %}
+
+                <hr>
+
+                <div id="pagination">
+                    {% if page != 1 %}
+                        <a href="{{ url('index_page', {'page': 1}) }}">First</a> |
+                        <a href="{{ url('index_page', {'page': page - 1}) }}">Prev</a>
+                    {% endif %}
+
+                    <span>| {{ page }} |</span>
+
+                    {% if page != nof_pages %}
+                        <a href="{{ url('index_page', {'page': page + 1}) }}">Next</a> |
+                        <a href="{{ url('index_page', {'page': nof_pages}) }}">Last</a>
+                    {% endif %}
+                </div>
+            {% else %}
+                <h2>The Products List is empty</h2>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+

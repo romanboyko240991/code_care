@@ -1,0 +1,8 @@
+<div class="check_user">
+    {% if app.user %}
+        <a href="{{ url('logout') }}">Logout [{{ app.user.username }}]</a>
+    {% else %}
+        <a href="{{ url('login') }}">Login</a> |
+        <a href="{{ url('register') }}">Register</a>
+    {% endif %}
+</div>

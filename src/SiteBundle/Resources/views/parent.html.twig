@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <style>
+        body {
+            font-family: 'Tangerine', serif;
+            font-size: 20px;
+            text-align: center;
+            color:#A0522D;
+            background-color: #FFE4E1;
+        }
+
+        h1 {
+            color: #1E90FF;
+        }
+
+        .login button, .register button {
+            width: 100px;
+            height: 50px;
+            font-size: 15px;
+        }
+        .register .register {
+            border: none;
+        }
+        .register li, .errors {
+            color:red;
+            list-style: none;
+            font-size: 18px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        .login, .register {
+            color: black;
+            font-size: 30px;
+            padding: 30px;
+            border: 1px solid #DEB887;
+            border-radius: 10px;
+            background-color: #FFF8DC;
+        }
+        #menu {
+            width:200px;
+            float: left;
+            text-align: left;
+            font-size: 40px;
+        }
+        
+        #products_content{
+            width: 380px;
+            float: left;
+            text-align: left;
+            padding-left: 20px;
+        }
+
+        #menu a:hover {
+            background-color: #587ea3;
+            color: white;
+        }
+
+        #menu a {
+            display: block;
+            width: 180px;
+            height: 60px;
+            padding-left: 20px;
+            line-height: 60px;
+        }
+
+        .check_user, .errors {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .check_user.form {
+            font-size: 20px;
+        }
+
+        .check_user a {
+            color: #30487b;
+        }
+
+        #pagination a, #menu a {
+            color: #FF6347;
+        }
+
+        h3 a {
+            color:black;
+        }
+
+        #pagination {
+            font-size: 40px;
+            color: #F4A460;
+            font-weight: bold;
+        }
+        
+        #wrapper {
+            width:600px;
+            margin: 0 auto;
+        }
+    </style>
+{% endblock %}
+

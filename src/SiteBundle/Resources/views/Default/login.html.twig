@@ -1,0 +1,29 @@
+{% extends 'SiteBundle::parent.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            <form action="{{ path('login') }}" method="post" class="login">
+                {% if error %}
+                    <div class="errors">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
+                <p>
+                    <label for="username">Username:</label>
+                    <br>
+                    <input type="text" id="username" name="_username" value="{{ last_username }}"/>
+                </p>
+
+                <p>
+                    <label for="password">Password:</label>
+                    <br>
+                    <input type="password" id="password" name="_password"/>
+                </p>
+                <button type="submit">Login</button>
+                <p class="check_user form"><a href="{{ url('register') }}">Register</a> |
+                    <a href="{{ url('index_page') }}">Index page</a>
+                </p>
+            </form>
+        </div>
+    </div>
+{% endblock %}

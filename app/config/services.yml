@@ -1,0 +1,45 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+    admin.user_post_create:
+        class: AdminBundle\Events\UserPostCreateEvent
+        arguments: ['@doctrine.orm.entity_manager']
+
+    admin.category:
+        class: AdminBundle\Admin\CategoryAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Admin Panel", label: "Categories" }
+        arguments:
+            - ~
+            - AppBundle\Entity\Category
+            - 'AdminBundle:CategoryAdmin'
+
+    admin.product:
+        class: AdminBundle\Admin\ProductAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Admin Panel", label: "Products" }
+        arguments:
+            - ~
+            - AppBundle\Entity\Product
+            - 'AdminBundle:ProductAdmin'
+
+    admin.product_category_association:
+        class: AdminBundle\Admin\ProductCategoryAssociationAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Admin Panel", label: "Products - Categories associations" }
+        arguments:
+            - ~
+            - AppBundle\Entity\ProductCategoryAssociation
+            - 'AdminBundle:ProductCategoryAssociationAdmin'
+
+    admin.user:
+        class: AdminBundle\Admin\UserAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Admin Panel", label: "Users" }
+        arguments:
+            - ~
+            - AppBundle\Entity\User
+            - 'AdminBundle:UserAdmin'

@@ -1,0 +1,37 @@
+{% extends 'SiteBundle::parent.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            {{ include('SiteBundle:Default:check_user.html.twig') }}
+
+            <h3><a href="{{ url('index_page') }}">Products List</a></h3>
+
+            <h1>Categories List</h1>
+            <hr>
+
+            <div id="menu">
+            {% if categories|length > 0 %}
+                    {% for category in categories %}
+                        <a href="{{ url('category_page', {'category_name': category.name}) }}">{{ category.name }}</a>
+                        <hr>
+                    {% endfor %}
+            {% else %}
+                <h3>The Categories list is empty</h3>
+            {% endif %}
+            </div>
+
+            {% if products_associations|length > 0 %}
+                <div id="products_content">
+                    {% for association in products_associations %}
+                        {% set product = association.getProduct() %}
+                        <h3>{{ product.name }} [${{ product.price }}]</h3>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <h2>The Products List is empty</h2>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
