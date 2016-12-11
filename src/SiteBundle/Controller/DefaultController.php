@@ -32,7 +32,6 @@ class DefaultController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $user->setPassword(password_hash($user->getPassword(), PASSWORD_BCRYPT));
             $user->setIsAdmin(false);
 
             $em = $this->getDoctrine()->getManager();

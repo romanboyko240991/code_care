@@ -33,14 +33,4 @@ class UserAdmin extends Admin
     {
         $listMapper->addIdentifier('username')->addIdentifier('email')->addIdentifier('isAdmin');
     }
-
-    public function postPersist($object)
-    {
-        $object->setPassword(password_hash($object->getPassword(), PASSWORD_BCRYPT));
-
-        $em = AdminBundle::getContainer()->get('doctrine')->getManager();
-
-        $em->persist($object);
-        $em->flush();
-    }
 }
